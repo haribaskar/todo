@@ -17,6 +17,8 @@ trait TodoHandler extends HttpService{
       body =>{
         val json = body.parseJson.asJsObject
         val todo_id = json.getFields("todo_id").head.asInstanceOf[JsString].value
+
+        
         if(!deleteTask(todo_id.toInt)){
           complete("delete successful")
         }
